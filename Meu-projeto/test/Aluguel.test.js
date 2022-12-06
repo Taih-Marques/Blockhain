@@ -26,7 +26,6 @@ describe("Contrato Aluguel", () => {
       from: contas[0],
       gas: "3000000",
     });
-
     await aluguel.methods.pagar().call({
       from: contas[0],
       value: web3.utils.toWei("0.2", "ether"),
