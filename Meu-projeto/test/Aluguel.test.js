@@ -9,11 +9,11 @@ let contas;
 
 beforeEach(async () => {
   contas = await web3.eth.getAccounts();
-
   aluguel = await new web3.eth.Contract(abi)
     .deploy({ data: evm.bytecode.object })
     .send({ from: contas[0], gas: "1000000" });
 });
+
 describe("Contrato Aluguel", () => {
   it("Deploy a contract", () => {
     // console.log(inbox);
@@ -30,9 +30,10 @@ describe("Contrato Aluguel", () => {
     });
 
     assert.strictEqual(contas[0], locador[0]);
-
     assert.strictEqual(1, locador.length);
+
   });
+  
   it("Permite que varias contas sejam adicionadas", async () => {
     await aluguel.methods.pagar().send({
       from: contas[0],
@@ -69,6 +70,7 @@ describe("Contrato Aluguel", () => {
       assert.ok(err);
     }
   });
+
   it("Somente o gerente pode fazer o sorteio", async () => {
     try {
       await aluguel.methods.pagar().send({

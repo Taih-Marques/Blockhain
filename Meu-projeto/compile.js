@@ -4,7 +4,7 @@ const solc = require("solc");
 
 // Pega o arquivo Inbox.sol e atribui a variável
 const AluguelPath = path.resolve(__dirname, "contracts", "Aluguel.sol");
-const source = fs.readFileSync(LoteriaPath, "utf8");
+const source = fs.readFileSync(AluguelPath, "utf8");
 
 // * Mais informações sobre o input e output
 // * https://docs.soliditylang.org/en/v0.7.4/using-the-compiler.html#output-description

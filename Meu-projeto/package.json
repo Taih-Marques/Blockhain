@@ -5,6 +5,9 @@
     "solc": "^0.8.17",
     "web3": "^1.8.1"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "devDependencies": {
     "ganache-cli": "^6.12.2",
     "mocha": "^10.1.0"

@@ -15,7 +15,6 @@ contract Aluguel {
         //atribui o endereço do gerente à variável
         gerente = payable(msg.sender); 
     }
-    
     function pagar() public payable{
         setPagamento();
         require(msg.value >= pagamento);
