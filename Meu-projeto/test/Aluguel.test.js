@@ -19,6 +19,7 @@ describe("Contrato Aluguel", () => {
     // console.log(inbox);
     assert.ok(aluguel.options.address);
   });
+
   it("Permite que uma conta seja adicionada", async () => {
 
     await aluguel.methods.setAtraso(3).send({
@@ -41,13 +42,25 @@ describe("Contrato Aluguel", () => {
   });
 
   it("Permite que varias contas sejam adicionadas", async () => {
+    await aluguel.methods.setAtraso(3).send({
+      from: contas[0],
+      gas: "3000000",
+    });
     await aluguel.methods.pagar().call({
       from: contas[0],
       value: web3.utils.toWei("0.2", "ether"),
     });
+    await aluguel.methods.setAtraso(3).send({
+      from: contas[1],
+      gas: "3000000",
+    });
     await aluguel.methods.pagar().call({
       from: contas[1],
       value: web3.utils.toWei("0.2", "ether"),
+    });
+    await aluguel.methods.setAtraso(3).send({
+      from: contas[2],
+      gas: "3000000",
     });
     await aluguel.methods.pagar().call({
       from: contas[2],
@@ -66,6 +79,10 @@ describe("Contrato Aluguel", () => {
   });
   it("Verificando a quantidade mínima de ether", async () => {
     try {
+      await aluguel.methods.setAtraso(3).send({
+        from: contas[0],
+        gas: "3000000",
+      });
       await aluguel.methods.pagar().send({
         from: contas[0],
         value: 0,
@@ -89,7 +106,7 @@ describe("Contrato Aluguel", () => {
     }
   });
   it("Testando o contrato como um todo", async () => {
-    await aluguel.methods.pagar().send({
+    await aluguel.methods.pagar().call({
       from: contas[0],
       value: web3.utils.toWei("2", "ether"),
     });
