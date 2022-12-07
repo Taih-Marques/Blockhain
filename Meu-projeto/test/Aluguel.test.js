@@ -58,8 +58,6 @@ describe("Contrato Aluguel", () => {
 
   })
 
-  
-
   it("Somente o locador pode pagar", async () => {
     try {
       await aluguel.methods.pagar().call({
@@ -70,5 +68,22 @@ describe("Contrato Aluguel", () => {
     } catch (err) {
       assert.ok(err);
     }
+  });
+  it("Testando o contrato como um todo", async () => {
+    await aluguel.methods.setPagamento().send({
+      from: contas[0],
+    });
+   
+
+    const saldoInicial = await web3.eth.getBalance(contas[0]);
+
+    await aluguel.methods.getPagamento().send({ from: contas[0] });
+
+    const saldoFinal = await web3.eth.getBalance(contas[0]);
+
+    const diferenca = saldoFinal - saldoInicial;
+
+    assert(diferenca < web3.utils.toWei("30", "ether"));
+
   });
 });

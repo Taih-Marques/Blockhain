@@ -46,5 +46,9 @@ contract Aluguel {
     function getPagamento() public view returns(uint256){
         return pagamento;
     }
+
+    function getAlert()  public view returns(bool){
+        return alert;
+    }
     
 }
