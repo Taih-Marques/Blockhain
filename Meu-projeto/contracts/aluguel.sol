@@ -22,18 +22,29 @@ contract Aluguel {
         alert = false;
     }
     
+    // definir os dias de atraso an variavel atraso
     function setAtraso(uint256 dias) public{
         atraso = dias;
-        setPagamento();
+        //setPagamento();
     }
     
+    //devolver o atraso
+    function getAtraso() public view returns(uint256) {
+        return atraso;
+    }
+
     function setPagamento() public{
         if(atraso > 0){
             alert = true;
-            pagamento = aluguel + (aluguel*2/100) + (aluguel*3/1000*atraso);
+            pagamento = aluguel*2;
+           // pagamento = aluguel + (aluguel*2/100) + (aluguel*3/1000*atraso);
         } else{
             pagamento = aluguel;
         }
+    }
+
+    function getPagamento() public view returns(uint256){
+        return pagamento;
     }
     
 }
