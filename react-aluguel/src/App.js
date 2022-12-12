@@ -33,7 +33,7 @@ const App = () => {
     carregarDados();
   }, []);
 
-  // * Realiza uma aposta
+  // * Realiza um pagamento
   const pagar = async (event) => {
     try {
       // Evita que a página seja recarregada
@@ -74,7 +74,7 @@ const App = () => {
       // Solicita sorte e manda conta que está realizando o sorteio
       await aluguel.methods.setAtraso(atraso).send({
         from: contas[0],
-      });s
+      });
       // Altera mensagem
       setMensagem(`Definido ${atraso} dias de atraso`);
     } catch (error) {
