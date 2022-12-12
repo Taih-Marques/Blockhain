@@ -3,7 +3,7 @@ const fs = require("fs"); // e garantir a compatibilidade de sistemas operaciona
 const solc = require("solc");
 
 // Pega o arquivo Inbox.sol e atribui a variável
-const AluguelPath = path.resolve(__dirname, "contracts", "Aluguel.sol");
+const AluguelPath = path.resolve(__dirname, "contracts", "aluguel.sol");
 const source = fs.readFileSync(AluguelPath, "utf8");
 
 // * Mais informações sobre o input e output
@@ -11,7 +11,7 @@ const source = fs.readFileSync(AluguelPath, "utf8");
 var input = {
   language: "Solidity",
   sources: {
-    "Aluguel.sol": {
+    "aluguel.sol": {
       content: source,
     },
     // Pode-se adicionar outros contratos, caso exista
@@ -28,4 +28,4 @@ let contratoCompilado = JSON.parse(solc.compile(JSON.stringify(input)));
 
 
 // Pedimos apenas o nosso contrato para exportação
-module.exports = contratoCompilado.contracts["Aluguel.sol"].Aluguel;
+module.exports = contratoCompilado.contracts["aluguel.sol"].Aluguel;

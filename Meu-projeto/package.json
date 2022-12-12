@@ -1,7 +1,10 @@
 {
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.0.15",
+    "@truffle/hdwallet-provider": "^1.2.0",
     "dotenv": "^16.0.3",
+    "prox": "^0.0.2",
     "solc": "^0.8.17",
     "web3": "^1.8.1"
   },
@@ -12,4 +15,5 @@
     "ganache-cli": "^6.12.2",
     "mocha": "^10.1.0"
   }
+  
 }

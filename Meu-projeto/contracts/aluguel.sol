@@ -8,7 +8,7 @@ contract Aluguel {
     bool public alert = false;
     
     uint256 public atraso = 0;
-    uint256 public aluguel = 30 ether;
+    uint256 public aluguel = 0.1 ether;
     uint256 public pagamento;
 
     constructor(){
@@ -22,6 +22,7 @@ contract Aluguel {
         alert = false;
     }
     
+
     // definir os dias de atraso an variavel atraso
     function setAtraso(uint256 dias) public{
         atraso = dias;
@@ -51,4 +52,11 @@ contract Aluguel {
         return alert;
     }
     
+    function getGerente() public view returns(address payable){
+        return gerente;
+    }
+    
+    function getLocador() public view returns(address payable){
+        return locador;
+    }
 }

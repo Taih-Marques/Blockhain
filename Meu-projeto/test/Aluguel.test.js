@@ -41,7 +41,7 @@ describe("Contrato Aluguel", () => {
       from: contas[0]
     })
 
-    assert.strictEqual(pagamento, web3.utils.toWei("30", "ether"))
+    assert.strictEqual(pagamento, web3.utils.toWei("0.1", "ether"))
 
     //Definir atraso e verificar pagamento com atraso
     await aluguel.methods.setAtraso(1).send({
@@ -54,8 +54,9 @@ describe("Contrato Aluguel", () => {
     const pagamento2 = await aluguel.methods.getPagamento().call({
       from: contas[1]
     })
-    assert.strictEqual(pagamento2, web3.utils.toWei("60", "ether"))
+    assert.strictEqual(pagamento2, web3.utils.toWei("0.2", "ether"))
 
+  
   })
 
   it("Somente o locador pode pagar", async () => {
@@ -83,7 +84,7 @@ describe("Contrato Aluguel", () => {
 
     const diferenca = saldoFinal - saldoInicial;
 
-    assert(diferenca < web3.utils.toWei("30", "ether"));
+    assert(diferenca < web3.utils.toWei("0.1", "ether"));
 
   });
 });
